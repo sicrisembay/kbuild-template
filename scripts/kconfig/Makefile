@@ -5,6 +5,8 @@
 PHONY += xconfig gconfig menuconfig config silentoldconfig update-po-config \
 	localmodconfig localyesconfig
 
+PHONY += mconfig
+
 ifdef KBUILD_KCONFIG
 Kconfig := $(KBUILD_KCONFIG)
 else
@@ -23,6 +25,8 @@ xconfig: $(obj)/qconf
 
 gconfig: $(obj)/gconf
 	$< $(silent) $(Kconfig)
+
+mconfig: $(obj)/mconf $(obj)/conf
 
 menuconfig: $(obj)/mconf
 	$< $(silent) $(Kconfig)
